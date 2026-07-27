@@ -30,8 +30,8 @@
             </nav>
 
             <div class="header-actions">
-                <button id="view-mode-toggle" class="btn-secondary">
-                    <span class="icon">🖥️</span> <span id="view-mode-label">Presentation Mode</span>
+                <button id="fullscreen-toggle" class="btn-secondary">
+                    <span class="icon">⛶</span> <span>Fullscreen Stage</span>
                 </button>
             </div>
         </div>
@@ -40,10 +40,10 @@
         </div>
     </header>
 
-    <!-- Main Content Area -->
+    <!-- Main Content Stage (Fixed Viewport) -->
     <main class="main-content">
         
-        <!-- SECTION 1: OVERVIEW & OBJECTIVES -->
+        <!-- STAGE 1: OVERVIEW & OBJECTIVES -->
         <section id="intro" class="section-block active-slide">
             <div class="hero-banner">
                 <div class="module-chip">MODULE 1</div>
@@ -103,7 +103,7 @@
             </div>
         </section>
 
-        <!-- SECTION 2: COMPUTER ORGANIZATION OVERVIEW & VON NEUMANN ARCHITECTURE -->
+        <!-- STAGE 2: COMPUTER ORGANIZATION OVERVIEW & VON NEUMANN ARCHITECTURE -->
         <section id="architecture" class="section-block">
             <div class="section-title-wrap">
                 <span class="section-badge">III. LESSON PROPER • PART 1</span>
@@ -168,15 +168,13 @@
             </div>
 
             <!-- Components Breakdown Grid -->
-            <div class="grid-3col mt-6">
+            <div class="grid-3col mt-4">
                 <div class="card detail-card">
                     <div class="card-badge">Processor</div>
                     <h3>Central Processor (CPU)</h3>
                     <ul>
-                        <li>Composed of the <strong>Control Unit (CU)</strong> and the <strong>Arithmetic and Logic Unit (ALU)</strong>.</li>
-                        <li>Reads & writes memory cell contents.</li>
-                        <li>Forwards data between memory cells and special registers.</li>
-                        <li>Decodes and executes program instructions.</li>
+                        <li>Composed of <strong>Control Unit (CU)</strong> and <strong>Arithmetic Logic Unit (ALU)</strong>.</li>
+                        <li>Reads & writes memory cell contents and decodes instructions.</li>
                     </ul>
                 </div>
 
@@ -184,9 +182,8 @@
                     <div class="card-badge">Storage</div>
                     <h3>Central Memory (RAM)</h3>
                     <ul>
-                        <li>Group of semiconductor cells used for general processes & program execution.</li>
-                        <li>Generically called <strong>Random Access Memory (RAM)</strong>.</li>
-                        <li><strong class="text-warning">Volatile Nature:</strong> Integrated circuits lose stored information when electricity is interrupted.</li>
+                        <li>Semiconductor cells for program execution (RAM).</li>
+                        <li><strong class="text-warning">Volatile:</strong> Loses data when electricity is interrupted.</li>
                     </ul>
                 </div>
 
@@ -194,14 +191,14 @@
                     <div class="card-badge">Interfacing</div>
                     <h3>I/O & Auxiliary Storage</h3>
                     <ul>
-                        <li><strong>I/O Units:</strong> Interfaces enabling communication between external world, processor, and memory.</li>
-                        <li><strong>Auxiliary Memory:</strong> Magnetic storage media holding <em>files</em> consisting of variable numbers of fixed-size registers.</li>
+                        <li>Interfaces communicating between processor & external peripherals.</li>
+                        <li>Auxiliary media holds files made of fixed registers.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3: INTERACTIVE LOGIC GATES PLAYGROUND -->
+        <!-- STAGE 3: INTERACTIVE LOGIC GATES PLAYGROUND -->
         <section id="logic-gates" class="section-block">
             <div class="section-title-wrap">
                 <span class="section-badge">III. LESSON PROPER • PART 2</span>
@@ -221,7 +218,7 @@
             </div>
 
             <!-- Playground Sandbox Area -->
-            <div class="grid-2col mt-4">
+            <div class="grid-2col">
                 <!-- Interactive Circuit Simulator Card -->
                 <div class="card glass-card simulator-card">
                     <div class="sim-header">
@@ -281,7 +278,7 @@
             </div>
         </section>
 
-        <!-- SECTION 4: UNIVERSAL LOGIC GATES & SYNTHESIS -->
+        <!-- STAGE 4: UNIVERSAL LOGIC GATES & SYNTHESIS -->
         <section id="universal-gates" class="section-block">
             <div class="section-title-wrap">
                 <span class="section-badge">III. LESSON PROPER • PART 3</span>
@@ -355,11 +352,11 @@
     <!-- Footer Controls & Presenter Navigation -->
     <footer class="app-footer">
         <div class="footer-container">
-            <button id="btn-prev-slide" class="btn-nav">← Previous</button>
+            <button id="btn-prev-slide" class="btn-nav">← Previous Stage</button>
             <div class="slide-indicator">
                 <span id="current-slide-num">1</span> / <span id="total-slides-num">4</span>
             </div>
-            <button id="btn-next-slide" class="btn-nav btn-primary">Next →</button>
+            <button id="btn-next-slide" class="btn-nav btn-primary">Next Stage →</button>
         </div>
     </footer>
 

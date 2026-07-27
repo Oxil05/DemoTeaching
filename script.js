@@ -5,7 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --------------------------------------------------------------------------
-    // 1. Slide Navigation & View Mode State
+    // 1. Stage Navigation & Fullscreen Controls
     // --------------------------------------------------------------------------
     const slides = document.querySelectorAll('.section-block');
     const navBtns = document.querySelectorAll('.nav-btn');
@@ -14,12 +14,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentSlideNumEl = document.getElementById('current-slide-num');
     const totalSlidesNumEl = document.getElementById('total-slides-num');
     const progressBar = document.getElementById('progress-bar');
-    const viewModeToggleBtn = document.getElementById('view-mode-toggle');
-    const viewModeLabel = document.getElementById('view-mode-label');
+    const fullscreenToggleBtn = document.getElementById('fullscreen-toggle');
 
     let currentSlideIndex = 0;
     const totalSlides = slides.length;
-    let isScrollMode = false;
 
     if (totalSlidesNumEl) totalSlidesNumEl.textContent = totalSlides;
 
@@ -37,43 +35,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (currentSlideNumEl) currentSlideNumEl.textContent = currentSlideIndex + 1;
         if (progressBar) progressBar.style.width = `${((currentSlideIndex + 1) / totalSlides) * 100}%`;
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Nav button clicks
     navBtns.forEach((btn, idx) => {
         btn.addEventListener('click', () => {
-            if (isScrollMode) {
-                const targetId = btn.dataset.target;
-                const targetEl = document.getElementById(targetId);
-                if (targetEl) targetEl.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                goToSlide(idx);
-            }
+            goToSlide(idx);
         });
     });
 
     if (btnPrev) btnPrev.addEventListener('click', () => goToSlide(currentSlideIndex - 1));
     if (btnNext) btnNext.addEventListener('click', () => goToSlide(currentSlideIndex + 1));
 
-    // Keyboard navigation
+    // Keyboard navigation (Arrow keys / PageUp / PageDown / Space)
     document.addEventListener('keydown', (e) => {
-        if (isScrollMode) return;
-        if (e.key === 'ArrowRight' || e.key === 'PageDown') {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
             goToSlide(currentSlideIndex + 1);
         } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
             goToSlide(currentSlideIndex - 1);
         }
     });
 
-    // View Mode Toggle (Presentation vs Scrollable Module)
-    if (viewModeToggleBtn) {
-        viewModeToggleBtn.addEventListener('click', () => {
-            isScrollMode = !isScrollMode;
-            document.body.classList.toggle('scroll-mode', isScrollMode);
-            if (viewModeLabel) {
-                viewModeLabel.textContent = isScrollMode ? 'Scroll Module Mode' : 'Presentation Mode';
+    // Fullscreen Toggle
+    if (fullscreenToggleBtn) {
+        fullscreenToggleBtn.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
             }
         });
     }
@@ -295,7 +288,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 { a: 0, b: 0, out: gate.eval(0, 0) },
                 { a: 0, b: 1, out: gate.eval(0, 1) },
                 { a: 1, b: 0, out: gate.eval(1, 0) },
-                { a: 1, b: 1, out: gate.eval(1, 1) }
+                { a: 1, b: 1, out: gate.eval(1, 1) },
             ];
 
             truthTableContainer.innerHTML = `
