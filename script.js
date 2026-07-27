@@ -1,10 +1,9 @@
 /* ==========================================================================
-   IT21-PT1 Module 1 Presentation Application Logic
+   IT21-PT1 Module 1 Presentation Application Logic (8-Stage Expanded Deck)
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Enable Spotlight Mode by default
     document.body.classList.add('spotlight-active');
 
     // --------------------------------------------------------------------------
@@ -49,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnNext) btnNext.addEventListener('click', () => goToSlide(currentSlideIndex + 1));
 
     document.addEventListener('keydown', (e) => {
-        // Prevent navigation when modal is open
-        if (document.getElementById('detail-modal').classList.contains('active')) return;
+        const modal = document.getElementById('detail-modal');
+        if (modal && modal.classList.contains('active')) return;
 
         if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
             goToSlide(currentSlideIndex + 1);
@@ -77,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         spotlightToggleBtn.addEventListener('click', () => {
             const isActive = document.body.classList.toggle('spotlight-active');
             spotlightToggleBtn.classList.toggle('active', isActive);
-            spotlightToggleBtn.querySelector('span:last-child').textContent = isActive ? 'Spotlight Focus: ON' : 'Spotlight Focus: OFF';
+            spotlightToggleBtn.querySelector('span:last-child').textContent = isActive ? 'Spotlight: ON' : 'Spotlight: OFF';
         });
     }
 
@@ -143,9 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (modalClose) {
-        modalClose.addEventListener('click', () => {
-            modal.classList.remove('active');
-        });
+        modalClose.addEventListener('click', () => modal.classList.remove('active'));
     }
 
     if (modal) {
@@ -155,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --------------------------------------------------------------------------
-    // 3. Stage 2 Von Neumann Architecture Lab Inspector & Simulation
+    // 3. Stage 3 Von Neumann Architecture Lab Inspector & Simulation
     // --------------------------------------------------------------------------
     const archNodes = document.querySelectorAll('.arch-node');
     const drawerBadge = document.getElementById('drawer-badge');
@@ -224,27 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --------------------------------------------------------------------------
-    // 4. Stage 3 Interactive Logic Gates Simulator
+    // 4. Logic Gates Engine Shared Helper
     // --------------------------------------------------------------------------
-    const gateBtns = document.querySelectorAll('.gate-btn');
-    const activeGateName = document.getElementById('active-gate-name');
-    const activeGateFormula = document.getElementById('active-gate-formula');
-    const toggleA = document.getElementById('toggle-a');
-    const toggleB = document.getElementById('toggle-b');
-    const controlB = document.getElementById('control-b');
-    const wireA = document.getElementById('wire-a-el');
-    const wireB = document.getElementById('wire-b-el');
-    const wireOut = document.getElementById('wire-out-el');
-    const outputBulb = document.getElementById('output-bulb');
-    const outputBulbVal = document.getElementById('output-bulb-val');
-    const gateSvgContainer = document.getElementById('gate-svg-container');
-    const gateDescText = document.getElementById('gate-desc-text');
-    const truthTableContainer = document.getElementById('truth-table-container');
-
-    let currentGate = 'AND';
-    let inputA = 0;
-    let inputB = 0;
-
     const gateDefinitions = {
         AND: {
             name: "AND Gate",
@@ -304,120 +282,158 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    function updateSimulator() {
-        const gate = gateDefinitions[currentGate];
-        if (!gate) return;
+    function setupGateSimulator(config) {
+        let gateKey = config.initialGate;
+        let inA = 0;
+        let inB = 0;
 
-        if (activeGateName) activeGateName.textContent = gate.name;
-        if (activeGateFormula) activeGateFormula.textContent = gate.formula;
-        if (gateDescText) gateDescText.textContent = gate.desc;
-        if (gateSvgContainer) gateSvgContainer.innerHTML = gate.svg;
+        function update() {
+            const gate = gateDefinitions[gateKey];
+            if (!gate) return;
 
-        if (controlB) controlB.style.display = (gate.inputs === 1) ? 'none' : 'flex';
-        if (wireB) wireB.style.display = (gate.inputs === 1) ? 'none' : 'block';
+            if (config.nameEl) config.nameEl.textContent = gate.name;
+            if (config.formulaEl) config.formulaEl.textContent = gate.formula;
+            if (config.descEl) config.descEl.textContent = gate.desc;
+            if (config.svgEl) config.svgEl.innerHTML = gate.svg;
 
-        const output = gate.eval(inputA, inputB);
+            if (config.ctrlB) config.ctrlB.style.display = (gate.inputs === 1) ? 'none' : 'flex';
+            if (config.wireB) config.wireB.style.display = (gate.inputs === 1) ? 'none' : 'block';
 
-        wireA.classList.toggle('active', inputA === 1);
-        wireA.querySelector('.signal-val').textContent = `A=${inputA}`;
+            const output = gate.eval(inA, inB);
 
-        if (gate.inputs === 2) {
-            wireB.classList.toggle('active', inputB === 1);
-            wireB.querySelector('.signal-val').textContent = `B=${inputB}`;
+            if (config.wireA) {
+                config.wireA.classList.toggle('active', inA === 1);
+                config.wireA.querySelector('.signal-val').textContent = `A=${inA}`;
+            }
+
+            if (gate.inputs === 2 && config.wireB) {
+                config.wireB.classList.toggle('active', inB === 1);
+                config.wireB.querySelector('.signal-val').textContent = `B=${inB}`;
+            }
+
+            if (config.wireOut) config.wireOut.classList.toggle('active', output === 1);
+            if (config.bulb) config.bulb.classList.toggle('active', output === 1);
+            if (config.bulbVal) config.bulbVal.textContent = output;
+
+            renderTable(gate, inA, inB, config.tableEl);
         }
 
-        wireOut.classList.toggle('active', output === 1);
-        outputBulb.classList.toggle('active', output === 1);
-        if (outputBulbVal) outputBulbVal.textContent = output;
+        function renderTable(gate, inputAVal, inputBVal, tableContainer) {
+            if (!tableContainer) return;
 
-        renderTruthTable(gate);
-    }
-
-    function renderTruthTable(gate) {
-        if (!truthTableContainer) return;
-
-        if (gate.inputs === 1) {
-            const rows = [
-                { a: 0, out: gate.eval(0, 0) },
-                { a: 1, out: gate.eval(1, 0) }
-            ];
-
-            truthTableContainer.innerHTML = `
-                <table class="truth-table">
-                    <thead>
-                        <tr>
-                            <th>Input A</th>
-                            <th>Output Y</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${rows.map(r => `
-                            <tr class="${r.a === inputA ? 'active-row' : ''}">
-                                <td>${r.a}</td>
-                                <td>${r.out}</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            `;
-        } else {
-            const rows = [
-                { a: 0, b: 0, out: gate.eval(0, 0) },
-                { a: 0, b: 1, out: gate.eval(0, 1) },
-                { a: 1, b: 0, out: gate.eval(1, 0) },
-                { a: 1, b: 1, out: gate.eval(1, 1) },
-            ];
-
-            truthTableContainer.innerHTML = `
-                <table class="truth-table">
-                    <thead>
-                        <tr>
-                            <th>Input A</th>
-                            <th>Input B</th>
-                            <th>Output Y</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${rows.map(r => `
-                            <tr class="${(r.a === inputA && r.b === inputB) ? 'active-row' : ''}">
-                                <td>${r.a}</td>
-                                <td>${r.b}</td>
-                                <td>${r.out}</td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            `;
+            if (gate.inputs === 1) {
+                const rows = [
+                    { a: 0, out: gate.eval(0, 0) },
+                    { a: 1, out: gate.eval(1, 0) }
+                ];
+                tableContainer.innerHTML = `
+                    <table class="truth-table">
+                        <thead>
+                            <tr><th>Input A</th><th>Output Y</th></tr>
+                        </thead>
+                        <tbody>
+                            ${rows.map(r => `
+                                <tr class="${r.a === inputAVal ? 'active-row' : ''}">
+                                    <td>${r.a}</td><td>${r.out}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            } else {
+                const rows = [
+                    { a: 0, b: 0, out: gate.eval(0, 0) },
+                    { a: 0, b: 1, out: gate.eval(0, 1) },
+                    { a: 1, b: 0, out: gate.eval(1, 0) },
+                    { a: 1, b: 1, out: gate.eval(1, 1) }
+                ];
+                tableContainer.innerHTML = `
+                    <table class="truth-table">
+                        <thead>
+                            <tr><th>Input A</th><th>Input B</th><th>Output Y</th></tr>
+                        </thead>
+                        <tbody>
+                            ${rows.map(r => `
+                                <tr class="${(r.a === inputAVal && r.b === inputBVal) ? 'active-row' : ''}">
+                                    <td>${r.a}</td><td>${r.b}</td><td>${r.out}</td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                `;
+            }
         }
-    }
 
-    gateBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            gateBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentGate = btn.dataset.gate;
-            updateSimulator();
+        config.gateBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                config.gateBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                gateKey = btn.dataset.gate;
+                update();
+            });
         });
+
+        if (config.toggleA) {
+            config.toggleA.addEventListener('click', () => {
+                inA = inA === 0 ? 1 : 0;
+                config.toggleA.textContent = inA;
+                config.toggleA.className = `toggle-btn val-${inA}`;
+                update();
+            });
+        }
+
+        if (config.toggleB) {
+            config.toggleB.addEventListener('click', () => {
+                inB = inB === 0 ? 1 : 0;
+                config.toggleB.textContent = inB;
+                config.toggleB.className = `toggle-btn val-${inB}`;
+                update();
+            });
+        }
+
+        update();
+    }
+
+    // --------------------------------------------------------------------------
+    // Stage 5 Basic Simulator Setup
+    // --------------------------------------------------------------------------
+    setupGateSimulator({
+        initialGate: 'AND',
+        gateBtns: document.querySelectorAll('#stage-5 .gate-btn'),
+        nameEl: document.getElementById('basic-gate-name'),
+        formulaEl: document.getElementById('basic-gate-formula'),
+        descEl: document.getElementById('basic-desc-text'),
+        svgEl: document.getElementById('basic-svg-container'),
+        ctrlB: document.getElementById('basic-control-b'),
+        wireA: document.getElementById('basic-wire-a'),
+        wireB: document.getElementById('basic-wire-b'),
+        wireOut: document.getElementById('basic-wire-out'),
+        bulb: document.getElementById('basic-bulb'),
+        bulbVal: document.getElementById('basic-bulb-val'),
+        tableEl: document.getElementById('basic-table-container'),
+        toggleA: document.getElementById('basic-toggle-a'),
+        toggleB: document.getElementById('basic-toggle-b')
     });
 
-    if (toggleA) {
-        toggleA.addEventListener('click', () => {
-            inputA = inputA === 0 ? 1 : 0;
-            toggleA.textContent = inputA;
-            toggleA.className = `toggle-btn val-${inputA}`;
-            updateSimulator();
-        });
-    }
-
-    if (toggleB) {
-        toggleB.addEventListener('click', () => {
-            inputB = inputB === 0 ? 1 : 0;
-            toggleB.textContent = inputB;
-            toggleB.className = `toggle-btn val-${inputB}`;
-            updateSimulator();
-        });
-    }
-
-    updateSimulator();
+    // --------------------------------------------------------------------------
+    // Stage 6 Derived Simulator Setup
+    // --------------------------------------------------------------------------
+    setupGateSimulator({
+        initialGate: 'NAND',
+        gateBtns: document.querySelectorAll('#stage-6 .derived-gate-btn'),
+        nameEl: document.getElementById('derived-gate-name'),
+        formulaEl: document.getElementById('derived-gate-formula'),
+        descEl: document.getElementById('derived-desc-text'),
+        svgEl: document.getElementById('derived-svg-container'),
+        ctrlB: null,
+        wireA: document.getElementById('derived-wire-a'),
+        wireB: document.getElementById('derived-wire-b'),
+        wireOut: document.getElementById('derived-wire-out'),
+        bulb: document.getElementById('derived-bulb'),
+        bulbVal: document.getElementById('derived-bulb-val'),
+        tableEl: document.getElementById('derived-table-container'),
+        toggleA: document.getElementById('derived-toggle-a'),
+        toggleB: document.getElementById('derived-toggle-b')
+    });
 
 });

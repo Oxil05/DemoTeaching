@@ -23,15 +23,19 @@
             </div>
             
             <nav class="nav-links">
-                <button class="nav-btn active" data-target="intro">1. Overview</button>
-                <button class="nav-btn" data-target="architecture">2. Architecture</button>
-                <button class="nav-btn" data-target="logic-gates">3. Logic Gates</button>
-                <button class="nav-btn" data-target="universal-gates">4. Universal Synthesis</button>
+                <button class="nav-btn active" data-target="stage-1">1. Overview</button>
+                <button class="nav-btn" data-target="stage-2">2. Concept</button>
+                <button class="nav-btn" data-target="stage-3">3. Von Neumann</button>
+                <button class="nav-btn" data-target="stage-4">4. Components</button>
+                <button class="nav-btn" data-target="stage-5">5. Basic Gates</button>
+                <button class="nav-btn" data-target="stage-6">6. Derived Gates</button>
+                <button class="nav-btn" data-target="stage-7">7. Universal</button>
+                <button class="nav-btn" data-target="stage-8">8. Master Summary</button>
             </nav>
 
             <div class="header-actions">
                 <button id="spotlight-toggle-btn" class="btn-action active">
-                    <span class="icon">🔍</span> <span>Spotlight Focus: ON</span>
+                    <span class="icon">🔍</span> <span>Spotlight: ON</span>
                 </button>
                 <button id="fullscreen-toggle" class="btn-action btn-primary">
                     <span class="icon">⛶</span> <span>Fullscreen</span>
@@ -46,56 +50,94 @@
     <!-- Main Content Stage -->
     <main class="main-content">
         
-        <!-- STAGE 1: OVERVIEW & OBJECTIVES -->
-        <section id="intro" class="section-block active-slide">
+        <!-- STAGE 1: MODULE OVERVIEW & OBJECTIVES -->
+        <section id="stage-1" class="section-block active-slide">
             <div class="stage-header text-center">
-                <span class="stage-chip">MODULE 1 • INTRODUCTION</span>
+                <span class="stage-chip">STAGE 1 OF 8 • MODULE 1 OVERVIEW</span>
                 <h1>Computer Organization & Architecture</h1>
-                <p class="stage-subtitle">Mastering System Components, Processing Units, and Logic Gate Foundations</p>
+                <p class="stage-subtitle">Basic Terminologies, Core System Functions, and Electronic Component Foundations</p>
             </div>
 
             <div class="grid-3col focus-group mt-6">
-                <!-- Objective 1 -->
                 <div class="card focus-card" data-focus="obj1">
                     <div class="card-icon-box cyan-box">🏷️</div>
                     <div class="card-tag">Objective 1</div>
                     <h3>Terminologies</h3>
-                    <p class="summary-text">Distinguish key terms in computer architecture vs organization.</p>
+                    <p class="summary-text">Distinguish key terms between computer architecture and computer organization.</p>
                     <button class="btn-detail-trigger" data-detail="obj1">Explore Details →</button>
                 </div>
 
-                <!-- Objective 2 -->
                 <div class="card focus-card" data-focus="obj2">
                     <div class="card-icon-box purple-box">🧠</div>
                     <div class="card-tag">Objective 2</div>
                     <h3>Structure & Function</h3>
-                    <p class="summary-text">Analyze Von Neumann architecture & core processing units.</p>
+                    <p class="summary-text">Analyze Von Neumann architecture & primary operational processing units.</p>
                     <button class="btn-detail-trigger" data-detail="obj2">Explore Details →</button>
                 </div>
 
-                <!-- Objective 3 -->
                 <div class="card focus-card" data-focus="obj3">
                     <div class="card-icon-box green-box">⚡</div>
                     <div class="card-tag">Objective 3</div>
                     <h3>Logic Gates</h3>
-                    <p class="summary-text">Evaluate basic, derived, and universal logic gate circuits.</p>
+                    <p class="summary-text">Analyze and evaluate basic, derived, and universal logic gate circuits.</p>
                     <button class="btn-detail-trigger" data-detail="obj3">Explore Details →</button>
                 </div>
             </div>
         </section>
 
-        <!-- STAGE 2: COMPUTER ORGANIZATION & VON NEUMANN ARCHITECTURE -->
-        <section id="architecture" class="section-block">
+        <!-- STAGE 2: ARCHITECTURE VS ORGANIZATION CONCEPT -->
+        <section id="stage-2" class="section-block">
             <div class="stage-header">
-                <span class="stage-chip">LESSON PROPER • PART 1</span>
+                <span class="stage-chip">STAGE 2 OF 8 • LESSON PROPER</span>
+                <h2>Architecture vs. Organization Concepts</h2>
+                <p class="stage-subtitle">Understanding the distinction between operational blueprints and physical hardware realization.</p>
+            </div>
+
+            <div class="grid-2col focus-group mt-4">
+                <div class="card focus-card">
+                    <div class="card-header">
+                        <span class="card-icon">🏛️</span>
+                        <h2>Computer Architecture</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="large-body">The <strong>basic operational design</strong> of a computer system.</p>
+                        <ul class="detail-list mt-4">
+                            <li>Pioneered by <strong>John Von Neumann</strong>, credited for most modern computers.</li>
+                            <li>Visible to program developers & assembly instruction sets.</li>
+                            <li><strong>Example:</strong> The <em>80x86 processor family</em> uses Von Neumann Architecture (VNA).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card focus-card">
+                    <div class="card-header">
+                        <span class="card-icon">⚙️</span>
+                        <h2>Computer Organization</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="large-body">The physical interconnections of hardware units.</p>
+                        <ul class="detail-list mt-4">
+                            <li>Promotes deep understanding of internal electronic components.</li>
+                            <li>How system designers combine components directly impacts <strong>system performance</strong>.</li>
+                            <li>Focuses on memory cells, control lines, and signal paths.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 3: VON NEUMANN ARCHITECTURE SYSTEM DIAGRAM -->
+        <section id="stage-3" class="section-block">
+            <div class="stage-header">
+                <span class="stage-chip">STAGE 3 OF 8 • LESSON PROPER</span>
                 <h2>Von Neumann Architecture Lab</h2>
-                <p class="stage-subtitle">Click any system component to activate optical zoom and open the inspection panel.</p>
+                <p class="stage-subtitle">Click any system component to zoom into its operational functions and simulate data transfers.</p>
             </div>
 
             <!-- Interactive Architecture Explorer -->
             <div class="arch-workspace glass-panel mt-4">
                 <div class="visualizer-header">
-                    <div class="live-indicator"><span class="dot"></span> Live Interactive Diagram</div>
+                    <div class="live-indicator"><span class="dot"></span> Von Neumann System Diagram (VNA)</div>
                     <button id="btn-simulate-bus" class="btn-action btn-primary">
                         <span class="icon">▶</span> Simulate Bus Data Cycle
                     </button>
@@ -113,7 +155,7 @@
                         </div>
                     </div>
 
-                    <!-- Bus Connector Lines -->
+                    <!-- Bus Lines -->
                     <div class="bus-lines">
                         <div class="bus-line bus-horizontal" id="bus-main">
                             <span class="bus-label">System Bus (Data / Address / Control)</span>
@@ -133,143 +175,235 @@
                         <div class="arch-node focus-card node-io" data-component="io">
                             <div class="node-icon">🔌</div>
                             <div class="node-title">I/O Units</div>
-                            <div class="node-sub">Peripherals & Storage</div>
+                            <div class="node-sub">Peripherals & Interfaces</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Interactive Detail Drawer -->
+                <!-- Detail Drawer -->
                 <div id="arch-detail-drawer" class="detail-drawer">
                     <div class="drawer-header">
                         <span id="drawer-badge" class="drawer-badge">CPU SELECTED</span>
                         <h3 id="drawer-title">Central Processing Unit (CPU)</h3>
                     </div>
                     <div class="drawer-body">
-                        <p id="drawer-desc">The CPU is composed of the Control Unit (CU) and the Arithmetic Logic Unit (ALU). It reads memory cell contents, decodes instructions, and executes calculations.</p>
-                        <div id="drawer-bullets" class="drawer-bullets">
-                            <!-- Populated dynamically -->
+                        <p id="drawer-desc">Composed of the Control Unit (CU) and Arithmetic Logic Unit (ALU). Reads/writes memory cells, decodes instructions, and executes calculations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 4: CORE SYSTEM COMPONENTS DEEP-DIVE -->
+        <section id="stage-4" class="section-block">
+            <div class="stage-header">
+                <span class="stage-chip">STAGE 4 OF 8 • LESSON PROPER</span>
+                <h2>Core System Components Breakdown</h2>
+                <p class="stage-subtitle">Detailed characteristics of CPU, Central Memory, I/O Units, and Auxiliary Memory.</p>
+            </div>
+
+            <div class="grid-2col focus-group mt-4">
+                <!-- CPU & Central Memory -->
+                <div class="card focus-card">
+                    <div class="card-header">
+                        <span class="card-icon">🧠</span>
+                        <h2>Processor & Central Memory</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="sub-component mb-3">
+                            <h4 class="text-blue">Central Processor (CPU)</h4>
+                            <p class="small-desc">Made of the <strong>Control Unit (CU)</strong> and <strong>Arithmetic Logic Unit (ALU)</strong>. Reads/writes memory cells, forwards data, decodes and executes program instructions.</p>
+                        </div>
+                        <div class="sub-component">
+                            <h4 class="text-blue">Central Memory (RAM)</h4>
+                            <p class="small-desc">Group of semiconductor cells used for program execution. <strong>Volatile Disadvantage:</strong> Integrated circuits lose stored info when electricity is interrupted.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- I/O & Auxiliary Storage -->
+                <div class="card focus-card">
+                    <div class="card-header">
+                        <span class="card-icon">💾</span>
+                        <h2>I/O & Auxiliary Memory</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="sub-component mb-3">
+                            <h4 class="text-blue">Input / Output Units (I/O)</h4>
+                            <p class="small-desc">Interfaces enabling processor communication with the exterior. Allows introducing information to be processed and later visualizing processed data.</p>
+                        </div>
+                        <div class="sub-component">
+                            <h4 class="text-blue">Auxiliary Memory Units</h4>
+                            <p class="small-desc">Stored information on magnetic media receives the name of <strong>files</strong>. Files consist of fixed-size registers holding info or programs.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- STAGE 3: INTERACTIVE LOGIC GATES PLAYGROUND -->
-        <section id="logic-gates" class="section-block">
+        <!-- STAGE 5: BASIC LOGIC GATES SIMULATOR (AND, OR, NOT) -->
+        <section id="stage-5" class="section-block">
             <div class="stage-header">
-                <span class="stage-chip">LESSON PROPER • PART 2</span>
-                <h2>Interactive Logic Gates Simulator</h2>
-                <p class="stage-subtitle">Select a logic gate, toggle inputs A and B, and observe real-time circuit outputs & truth table rows.</p>
+                <span class="stage-chip">STAGE 5 OF 8 • LESSON PROPER</span>
+                <h2>Basic Logic Gates Simulator (AND, OR, NOT)</h2>
+                <p class="stage-subtitle">Explore fundamental digital logic gates. Toggle inputs A and B to evaluate outputs & truth tables.</p>
             </div>
 
             <!-- Gate Selector Pills -->
             <div class="gate-selector focus-group">
-                <button class="gate-btn focus-card active" data-gate="AND">AND</button>
-                <button class="gate-btn focus-card" data-gate="OR">OR</button>
-                <button class="gate-btn focus-card" data-gate="NOT">NOT</button>
-                <button class="gate-btn focus-card" data-gate="NAND">NAND</button>
-                <button class="gate-btn focus-card" data-gate="NOR">NOR</button>
-                <button class="gate-btn focus-card" data-gate="EXOR">XOR</button>
-                <button class="gate-btn focus-card" data-gate="EXNOR">XNOR</button>
+                <button class="gate-btn focus-card active" data-gate="AND">AND Gate</button>
+                <button class="gate-btn focus-card" data-gate="OR">OR Gate</button>
+                <button class="gate-btn focus-card" data-gate="NOT">NOT Gate (Inverter)</button>
             </div>
 
-            <!-- Simulator Grid -->
             <div class="grid-2col focus-group mt-4">
-                <!-- Circuit Simulator Card -->
                 <div class="card simulator-card focus-card">
                     <div class="sim-header">
-                        <h3 id="active-gate-name">AND Gate</h3>
-                        <span id="active-gate-formula" class="formula-badge">Y = A • B</span>
+                        <h3 id="basic-gate-name">AND Gate</h3>
+                        <span id="basic-gate-formula" class="formula-badge">Y = A • B</span>
                     </div>
 
                     <div class="circuit-workspace">
-                        <!-- Input Control Switches -->
                         <div class="switch-panel">
-                            <div class="switch-control" id="control-a">
+                            <div class="switch-control" id="basic-control-a">
                                 <label class="switch-label">Input A</label>
-                                <button id="toggle-a" class="toggle-btn val-0">0</button>
+                                <button id="basic-toggle-a" class="toggle-btn val-0">0</button>
                             </div>
-                            <div class="switch-control" id="control-b">
+                            <div class="switch-control" id="basic-control-b">
                                 <label class="switch-label">Input B</label>
-                                <button id="toggle-b" class="toggle-btn val-0">0</button>
+                                <button id="basic-toggle-b" class="toggle-btn val-0">0</button>
                             </div>
                         </div>
 
-                        <!-- Circuit Visualization -->
                         <div class="circuit-visual">
-                            <div class="signal-wire wire-a" id="wire-a-el"><span class="signal-val">A=0</span></div>
-                            <div class="signal-wire wire-b" id="wire-b-el"><span class="signal-val">B=0</span></div>
-                            
+                            <div class="signal-wire wire-a" id="basic-wire-a"><span class="signal-val">A=0</span></div>
+                            <div class="signal-wire wire-b" id="basic-wire-b"><span class="signal-val">B=0</span></div>
                             <div class="gate-symbol-box">
-                                <div id="gate-svg-container" class="svg-container">
-                                    <!-- Dynamic Gate SVG -->
-                                </div>
+                                <div id="basic-svg-container" class="svg-container"></div>
                             </div>
-
-                            <div class="signal-wire wire-out" id="wire-out-el">
-                                <div class="output-bulb" id="output-bulb">
-                                    <span id="output-bulb-val">0</span>
+                            <div class="signal-wire wire-out" id="basic-wire-out">
+                                <div class="output-bulb" id="basic-bulb">
+                                    <span id="basic-bulb-val">0</span>
                                 </div>
                                 <span class="signal-val">Output</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="gate-description-box" id="gate-desc-text">
+                    <div class="gate-description-box" id="basic-desc-text">
                         The AND gate gives a high output (1) ONLY if all its inputs are high.
                     </div>
                 </div>
 
-                <!-- Dynamic Truth Table Card -->
                 <div class="card truth-table-card focus-card">
                     <div class="sim-header">
                         <h3>Live Truth Table</h3>
                         <span class="active-row-indicator">Active Row Highlighted</span>
                     </div>
-
-                    <div id="truth-table-container" class="table-responsive">
-                        <!-- Rendered dynamically by script.js -->
-                    </div>
+                    <div id="basic-table-container" class="table-responsive"></div>
                 </div>
             </div>
         </section>
 
-        <!-- STAGE 4: UNIVERSAL LOGIC GATES & SYNTHESIS -->
-        <section id="universal-gates" class="section-block">
+        <!-- STAGE 6: DERIVED LOGIC GATES SIMULATOR (NAND, NOR, XOR, XNOR) -->
+        <section id="stage-6" class="section-block">
             <div class="stage-header">
-                <span class="stage-chip">LESSON PROPER • PART 3</span>
-                <h2>Universal Logic Gates & Expression Synthesis</h2>
-                <p class="stage-subtitle">NAND and NOR gates are universal building blocks capable of synthesizing any digital circuit.</p>
+                <span class="stage-chip">STAGE 6 OF 8 • LESSON PROPER</span>
+                <h2>Derived Logic Gates Simulator (NAND, NOR, XOR, XNOR)</h2>
+                <p class="stage-subtitle">Explore inverted and exclusive digital logic operations with real-time circuit simulation.</p>
+            </div>
+
+            <!-- Gate Selector Pills -->
+            <div class="gate-selector focus-group">
+                <button class="derived-gate-btn gate-btn focus-card active" data-gate="NAND">NAND</button>
+                <button class="derived-gate-btn gate-btn focus-card" data-gate="NOR">NOR</button>
+                <button class="derived-gate-btn gate-btn focus-card" data-gate="EXOR">EXOR (XOR)</button>
+                <button class="derived-gate-btn gate-btn focus-card" data-gate="EXNOR">EXNOR (XNOR)</button>
+            </div>
+
+            <div class="grid-2col focus-group mt-4">
+                <div class="card simulator-card focus-card">
+                    <div class="sim-header">
+                        <h3 id="derived-gate-name">NAND Gate</h3>
+                        <span id="derived-gate-formula" class="formula-badge">Y = (A • B)'</span>
+                    </div>
+
+                    <div class="circuit-workspace">
+                        <div class="switch-panel">
+                            <div class="switch-control">
+                                <label class="switch-label">Input A</label>
+                                <button id="derived-toggle-a" class="toggle-btn val-0">0</button>
+                            </div>
+                            <div class="switch-control">
+                                <label class="switch-label">Input B</label>
+                                <button id="derived-toggle-b" class="toggle-btn val-0">0</button>
+                            </div>
+                        </div>
+
+                        <div class="circuit-visual">
+                            <div class="signal-wire wire-a" id="derived-wire-a"><span class="signal-val">A=0</span></div>
+                            <div class="signal-wire wire-b" id="derived-wire-b"><span class="signal-val">B=0</span></div>
+                            <div class="gate-symbol-box">
+                                <div id="derived-svg-container" class="svg-container"></div>
+                            </div>
+                            <div class="signal-wire wire-out" id="derived-wire-out">
+                                <div class="output-bulb" id="derived-bulb">
+                                    <span id="derived-bulb-val">0</span>
+                                </div>
+                                <span class="signal-val">Output</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="gate-description-box" id="derived-desc-text">
+                        A NOT-AND gate. The output is high (1) if ANY of the inputs are low.
+                    </div>
+                </div>
+
+                <div class="card truth-table-card focus-card">
+                    <div class="sim-header">
+                        <h3>Live Truth Table</h3>
+                        <span class="active-row-indicator">Active Row Highlighted</span>
+                    </div>
+                    <div id="derived-table-container" class="table-responsive"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 7: UNIVERSAL LOGIC GATES & SYNTHESIS -->
+        <section id="stage-7" class="section-block">
+            <div class="stage-header">
+                <span class="stage-chip">STAGE 7 OF 8 • LESSON PROPER</span>
+                <h2>Universal Functions & Expression Synthesis</h2>
+                <p class="stage-subtitle">NAND and NOR gates are universal functions that can generate AND, OR, and NOT operations.</p>
             </div>
 
             <div class="grid-2col focus-group mt-4">
                 <div class="card focus-card">
                     <div class="card-header">
                         <span class="card-icon">⚡</span>
-                        <h2>Universal Functions</h2>
+                        <h2>Universal Synthesis Rules</h2>
                     </div>
                     <div class="card-body">
-                        <p class="large-body">Both <strong>NAND</strong> and <strong>NOR</strong> can generate basic AND, OR, and NOT functions.</p>
+                        <p class="large-body">NAND and NOR can construct any digital circuit without using other gate types.</p>
                         
                         <div class="universal-rules mt-4">
                             <div class="rule-box rule-sop">
-                                <h4>Sum of Products (SOP)</h4>
-                                <p>Implemented using <strong>NAND gates only</strong> by replacing all AND and OR gates with NAND gates.</p>
+                                <h4>Sum of Products (SOP) Form</h4>
+                                <p>Can be implemented using <strong>NAND gates only</strong> by replacing all AND and OR gates with NAND gates.</p>
                             </div>
 
                             <div class="rule-box rule-pos mt-3">
-                                <h4>Product of Sums (POS)</h4>
-                                <p>Implemented using <strong>NOR gates only</strong> by replacing all AND and OR gates with NOR gates.</p>
+                                <h4>Product of Sums (POS) Form</h4>
+                                <p>Can be implemented using <strong>NOR gates only</strong> by replacing all AND and OR gates with NOR gates.</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Universal Equivalencies -->
                 <div class="card focus-card">
                     <div class="card-header">
                         <span class="card-icon">🛠️</span>
-                        <h2>NAND & NOR Synthesis</h2>
+                        <h2>Gate Conversion Equivalencies</h2>
                     </div>
                     <div class="card-body">
                         <div class="equiv-list">
@@ -281,15 +415,95 @@
                             <div class="equiv-item">
                                 <span class="op-badge">A AND B</span>
                                 <span class="equiv-arrow">➔</span>
-                                <span class="equiv-code">((A • B)')'</span>
+                                <span class="equiv-code">((A • B)')'  [NAND + NAND Inverter]</span>
                             </div>
                             <div class="equiv-item">
                                 <span class="op-badge">A OR B</span>
                                 <span class="equiv-arrow">➔</span>
-                                <span class="equiv-code">(A' • B')'</span>
+                                <span class="equiv-code">(A' • B')'  [Inverted Inputs NANDed]</span>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STAGE 8: MASTER SUMMARY & TRUTH TABLE REFERENCE -->
+        <section id="stage-8" class="section-block">
+            <div class="stage-header">
+                <span class="stage-chip">STAGE 8 OF 8 • MASTER SUMMARY</span>
+                <h2>Logic Gates Master Reference & Conclusion</h2>
+                <p class="stage-subtitle">Complete review of all 7 logic gates, symbols, boolean formulas, and truth tables (Tables 1 & 2).</p>
+            </div>
+
+            <div class="card focus-card mt-4">
+                <h3>Table 2: Logic Gates Representation Master Truth Table</h3>
+                <div class="table-responsive mt-3">
+                    <table class="truth-table master-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2">INPUTS</th>
+                                <th colspan="7">OUTPUTS</th>
+                            </tr>
+                            <tr>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>AND (A•B)</th>
+                                <th>NAND ((A•B)')</th>
+                                <th>OR (A+B)</th>
+                                <th>NOR ((A+B)')</th>
+                                <th>EXOR (A⊕B)</th>
+                                <th>EXNOR ((A⊕B)')</th>
+                                <th>NOT A (A')</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -311,9 +525,7 @@
             <button id="modal-close" class="modal-close">×</button>
             <span id="modal-tag" class="card-tag">OBJECTIVE DETAIL</span>
             <h2 id="modal-title">Objective Details</h2>
-            <div id="modal-body" class="modal-body">
-                <!-- Content inserted by JS -->
-            </div>
+            <div id="modal-body" class="modal-body"></div>
         </div>
     </div>
 
@@ -322,7 +534,7 @@
         <div class="footer-container">
             <button id="btn-prev-slide" class="btn-nav">← Previous Stage</button>
             <div class="slide-indicator">
-                Stage <span id="current-slide-num">1</span> of <span id="total-slides-num">4</span>
+                Stage <span id="current-slide-num">1</span> of <span id="total-slides-num">8</span>
             </div>
             <button id="btn-next-slide" class="btn-nav btn-primary">Next Stage →</button>
         </div>
