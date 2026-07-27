@@ -6,7 +6,7 @@
     <title>IT21-PT1 | Module 1: Computer Organization & Architecture</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="dark-theme">
@@ -25,9 +25,8 @@
             <nav class="nav-links">
                 <button class="nav-btn active" data-target="intro">1. Overview</button>
                 <button class="nav-btn" data-target="architecture">2. Architecture</button>
-                <button class="nav-btn" data-target="generations">3. Generations</button>
-                <button class="nav-btn" data-target="logic-gates">4. Logic Gates</button>
-                <button class="nav-btn" data-target="universal-gates">5. Universal Synthesis</button>
+                <button class="nav-btn" data-target="logic-gates">3. Logic Gates</button>
+                <button class="nav-btn" data-target="universal-gates">4. Universal Synthesis</button>
             </nav>
 
             <div class="header-actions">
@@ -202,90 +201,10 @@
             </div>
         </section>
 
-        <!-- SECTION 3: GENERATION OF COMPUTERS -->
-        <section id="generations" class="section-block">
-            <div class="section-title-wrap">
-                <span class="section-badge">III. LESSON PROPER • PART 2</span>
-                <h2>Generation of Computers Timeline</h2>
-                <p>Track the evolutionary hardware leaps from early massive vacuum tubes to modern micro-electronics and AI.</p>
-            </div>
-
-            <!-- Interactive Timeline Tabs -->
-            <div class="timeline-tabs-container">
-                <div class="timeline-tabs">
-                    <button class="gen-tab active" data-gen="1">1st Gen (1940s)</button>
-                    <button class="gen-tab" data-gen="2">2nd Gen</button>
-                    <button class="gen-tab" data-gen="3">3rd Gen (1960s)</button>
-                    <button class="gen-tab" data-gen="4">4th Gen</button>
-                    <button class="gen-tab" data-gen="5">5th Gen (Modern)</button>
-                </div>
-            </div>
-
-            <!-- Generation Display Card -->
-            <div id="gen-display-card" class="card glass-card gen-display-card mt-4">
-                <!-- Content dynamically populated by script.js -->
-            </div>
-
-            <!-- Summary Comparison Matrix -->
-            <div class="card glass-card mt-6">
-                <h3>Hardware Generations Quick Comparison</h3>
-                <div class="table-responsive mt-4">
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Generation</th>
-                                <th>Core Technology</th>
-                                <th>Programming / Software</th>
-                                <th>Key Characteristics</th>
-                                <th>Example Systems</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="gen-pill gen-1">1st Gen</span></td>
-                                <td>Vacuum Tubes / Electronic Valves</td>
-                                <td>Machine / Mechanical Language</td>
-                                <td>Massive, clumsy, high heat, frequent failures</td>
-                                <td>UNIVAC</td>
-                            </tr>
-                            <tr>
-                                <td><span class="gen-pill gen-2">2nd Gen</span></td>
-                                <td>Transistors & Core Memory</td>
-                                <td>Machine & Assembly Language, First OS</td>
-                                <td>Faster, smaller, lower power, magnetic tapes</td>
-                                <td>ATLAS</td>
-                            </tr>
-                            <tr>
-                                <td><span class="gen-pill gen-3">3rd Gen</span></td>
-                                <td>Integrated Circuits (SSI & MSI)</td>
-                                <td>High-Level Languages</td>
-                                <td>Increased reliability, compatibility</td>
-                                <td>IBM 360 Series</td>
-                            </tr>
-                            <tr>
-                                <td><span class="gen-pill gen-4">4th Gen</span></td>
-                                <td>Micro-electronics (LSI & VLSI)</td>
-                                <td>Portable OS, Data Communications</td>
-                                <td>Portable PCs, RAID storage, Virtual Reality</td>
-                                <td>Modern Microprocessors</td>
-                            </tr>
-                            <tr>
-                                <td><span class="gen-pill gen-5">5th Gen</span></td>
-                                <td>Superconductors & Microprocessors</td>
-                                <td>AI & Natural Language Processing</td>
-                                <td>Parallel processing, speech recognition, robotics</td>
-                                <td>AI & Supercomputers</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 4: INTERACTIVE LOGIC GATES PLAYGROUND -->
+        <!-- SECTION 3: INTERACTIVE LOGIC GATES PLAYGROUND -->
         <section id="logic-gates" class="section-block">
             <div class="section-title-wrap">
-                <span class="section-badge">III. LESSON PROPER • PART 3</span>
+                <span class="section-badge">III. LESSON PROPER • PART 2</span>
                 <h2>Interactive Logic Gates Simulator</h2>
                 <p>Digital systems are constructed using logic gates. Toggle inputs A and B to evaluate real-time outputs and truth tables.</p>
             </div>
@@ -362,10 +281,10 @@
             </div>
         </section>
 
-        <!-- SECTION 5: UNIVERSAL LOGIC GATES & SYNTHESIS -->
+        <!-- SECTION 4: UNIVERSAL LOGIC GATES & SYNTHESIS -->
         <section id="universal-gates" class="section-block">
             <div class="section-title-wrap">
-                <span class="section-badge">III. LESSON PROPER • PART 4</span>
+                <span class="section-badge">III. LESSON PROPER • PART 3</span>
                 <h2>Universal Logic Gates & Expression Synthesis</h2>
                 <p>Understanding why NAND and NOR gates are universal building blocks for digital computer architecture.</p>
             </div>
@@ -438,7 +357,7 @@
         <div class="footer-container">
             <button id="btn-prev-slide" class="btn-nav">← Previous</button>
             <div class="slide-indicator">
-                <span id="current-slide-num">1</span> / <span id="total-slides-num">5</span>
+                <span id="current-slide-num">1</span> / <span id="total-slides-num">4</span>
             </div>
             <button id="btn-next-slide" class="btn-nav btn-primary">Next →</button>
         </div>
