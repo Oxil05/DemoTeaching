@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const componentDetails = {
         cpu: {
             title: "Central Processing Unit (CPU)",
-            desc: "The brain of the computer containing the Control Unit (CU) and Arithmetic Logic Unit (ALU). It reads memory cell contents, decodes program instructions, executes calculations, and manages register data transfers."
+            desc: "The primary computing engine composed of the Control Unit (CU) and Arithmetic Logic Unit (ALU). It reads memory cell contents, decodes instructions, executes calculations, and manages register transfers."
         },
         memory: {
             title: "Central Memory (Random Access Memory - RAM)",
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         io: {
             title: "Input/Output (I/O) & Auxiliary Memory Units",
-            desc: "Interfaces that allow the processor to communicate with external peripherals. Auxiliary storage (magnetic disks/files) provides persistent storage organized into fixed-size registers."
+            desc: "Interfaces that allow the processor to communicate with external peripherals. Auxiliary storage (magnetic media/files) provides persistent storage organized into fixed-size registers."
         }
     };
 
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h3>${data.title}</h3>
                 <span class="gen-tech-tag">${data.tech}</span>
             </div>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">${data.description}</p>
+            <p style="color: #e2e8f0; font-size: 1.25rem; margin-bottom: 1.8rem; font-weight: 500;">${data.description}</p>
             <div class="gen-features-list">
                 ${data.features.map(f => `<div class="gen-feature-item">${f}</div>`).join('')}
             </div>
@@ -270,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "The AND gate gives a high output (1) ONLY if all its inputs are high.",
             eval: (a, b) => a & b,
             inputs: 2,
-            svg: `<svg width="100" height="60" viewBox="0 0 100 60"><path d="M10 10 H40 A20 20 0 0 1 40 50 H10 Z" fill="none" stroke="#00f2fe" stroke-width="3"/></svg>`
+            svg: `<svg width="120" height="70" viewBox="0 0 100 60"><path d="M10 10 H40 A20 20 0 0 1 40 50 H10 Z" fill="none" stroke="#00e5ff" stroke-width="4"/></svg>`
         },
         OR: {
             name: "OR Gate",
@@ -278,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "The OR gate gives a high output (1) if ONE OR MORE of its inputs are high.",
             eval: (a, b) => a | b,
             inputs: 2,
-            svg: `<svg width="100" height="60" viewBox="0 0 100 60"><path d="M10 10 Q35 30 10 50 Q50 50 65 30 Q50 10 10 10 Z" fill="none" stroke="#00f2fe" stroke-width="3"/></svg>`
+            svg: `<svg width="120" height="70" viewBox="0 0 100 60"><path d="M10 10 Q35 30 10 50 Q50 50 65 30 Q50 10 10 10 Z" fill="none" stroke="#00e5ff" stroke-width="4"/></svg>`
         },
         NOT: {
             name: "NOT Gate (Inverter)",
@@ -286,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "The NOT gate produces an inverted version of the input at its output.",
             eval: (a) => a === 1 ? 0 : 1,
             inputs: 1,
-            svg: `<svg width="100" height="60" viewBox="0 0 100 60"><polygon points="15,10 60,30 15,50" fill="none" stroke="#00f2fe" stroke-width="3"/><circle cx="66" cy="30" r="5" fill="none" stroke="#00f2fe" stroke-width="3"/></svg>`
+            svg: `<svg width="120" height="70" viewBox="0 0 100 60"><polygon points="15,10 60,30 15,50" fill="none" stroke="#00e5ff" stroke-width="4"/><circle cx="66" cy="30" r="5" fill="none" stroke="#00e5ff" stroke-width="4"/></svg>`
         },
         NAND: {
             name: "NAND Gate (NOT-AND)",
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "A NOT-AND gate. The output is high (1) if ANY of the inputs are low.",
             eval: (a, b) => (a & b) === 1 ? 0 : 1,
             inputs: 2,
-            svg: `<svg width="100" height="60" viewBox="0 0 100 60"><path d="M10 10 H35 A20 20 0 0 1 35 50 H10 Z" fill="none" stroke="#00f2fe" stroke-width="3"/><circle cx="60" cy="30" r="5" fill="none" stroke="#00f2fe" stroke-width="3"/></svg>`
+            svg: `<svg width="120" height="70" viewBox="0 0 100 60"><path d="M10 10 H35 A20 20 0 0 1 35 50 H10 Z" fill="none" stroke="#00e5ff" stroke-width="4"/><circle cx="60" cy="30" r="5" fill="none" stroke="#00e5ff" stroke-width="4"/></svg>`
         },
         NOR: {
             name: "NOR Gate (NOT-OR)",
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "A NOT-OR gate. The outputs are low (0) if ANY of the inputs are high.",
             eval: (a, b) => (a | b) === 1 ? 0 : 1,
             inputs: 2,
-            svg: `<svg width="100" height="60" viewBox="0 0 100 60"><path d="M10 10 Q35 30 10 50 Q50 50 65 30 Q50 10 10 10 Z" fill="none" stroke="#00f2fe" stroke-width="3"/><circle cx="72" cy="30" r="5" fill="none" stroke="#00f2fe" stroke-width="3"/></svg>`
+            svg: `<svg width="120" height="70" viewBox="0 0 100 60"><path d="M10 10 Q35 30 10 50 Q50 50 65 30 Q50 10 10 10 Z" fill="none" stroke="#00e5ff" stroke-width="4"/><circle cx="72" cy="30" r="5" fill="none" stroke="#00e5ff" stroke-width="4"/></svg>`
         },
         EXOR: {
             name: "EXOR (Exclusive-OR) Gate",
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "The Exclusive-OR gate gives a high output (1) if EITHER, but NOT BOTH, inputs are high.",
             eval: (a, b) => a ^ b,
             inputs: 2,
-            svg: `<svg width="100" height="60" viewBox="0 0 100 60"><path d="M5 10 Q30 30 5 50" fill="none" stroke="#00f2fe" stroke-width="2"/><path d="M15 10 Q40 30 15 50 Q55 50 70 30 Q55 10 15 10 Z" fill="none" stroke="#00f2fe" stroke-width="3"/></svg>`
+            svg: `<svg width="120" height="70" viewBox="0 0 100 60"><path d="M5 10 Q30 30 5 50" fill="none" stroke="#00e5ff" stroke-width="3"/><path d="M15 10 Q40 30 15 50 Q55 50 70 30 Q55 10 15 10 Z" fill="none" stroke="#00e5ff" stroke-width="4"/></svg>`
         },
         EXNOR: {
             name: "EXNOR (Exclusive-NOR) Gate",
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
             desc: "Does the opposite of EXOR. Gives a low output (0) if either, but not both, inputs are high.",
             eval: (a, b) => (a ^ b) === 1 ? 0 : 1,
             inputs: 2,
-            svg: `<svg width="100" height="60" viewBox="0 0 100 60"><path d="M5 10 Q30 30 5 50" fill="none" stroke="#00f2fe" stroke-width="2"/><path d="M15 10 Q40 30 15 50 Q55 50 70 30 Q55 10 15 10 Z" fill="none" stroke="#00f2fe" stroke-width="3"/><circle cx="76" cy="30" r="5" fill="none" stroke="#00f2fe" stroke-width="3"/></svg>`
+            svg: `<svg width="120" height="70" viewBox="0 0 100 60"><path d="M5 10 Q30 30 5 50" fill="none" stroke="#00e5ff" stroke-width="3"/><path d="M15 10 Q40 30 15 50 Q55 50 70 30 Q55 10 15 10 Z" fill="none" stroke="#00e5ff" stroke-width="4"/><circle cx="76" cy="30" r="5" fill="none" stroke="#00e5ff" stroke-width="4"/></svg>`
         }
     };
 
